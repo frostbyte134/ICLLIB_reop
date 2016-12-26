@@ -14,14 +14,11 @@
 
 - [1. Introduction](#1-introduction)
 	
-- [2. Components](#3-features)
-    - [3.1 Low Level Context Architecture](#31-plug-and-play-recognizers)
-    - [3.2 High Level Context Architecture](#32-external-configuration-file)
+- [2. Low Level Context Awareness](#2-low-level-context-awareness)
    
-- [3. Authors](#4-authors)
+- [3. High Level Context Awareness](#3-high-level-context-awareness)
 
-
-- [4. License](#6-license)
+- [4. License](#4-license)
 
 <!-- Main Body of the Document -->
 
@@ -29,81 +26,48 @@
 # 1. Introduction
 
 Current domain-specific solutions are seen to be certainly insufficient to deal with the magnitude of the behaviour analysis problem, thus making it necessary to rather use more holistic approaches to infer and analyse people’s conduct. In this context, it is devised Mining Minds, a novel digital health and wellness platform designed to seamlessly investigate and support people’s lifestyles
-by intelligently mining human’s daily living data generated through heterogeneous resources. The multimodal context mining framework presented in this paper plays a core role in Mining Minds for the transformation of heterogeneous sensory data into interpretable and actionable information from which behavioural patterns can be derived. Although this framework has originally been devised to operate in conjunction with other layers of the Mining Minds platform stack, it can nevertheless operate as an independent and decoupled engine for the inference and modelling of people’s context. The multimodal context mining framework is composed of two main modules (Figure 1), namely Low Level Context Awareness (LLCA) and High Level Context Awareness (HLCA). LLCA is in charge of converting the wide-spectrum of data obtained from the user interaction with the real and cyber world into abstract concepts or categories, namely physical activities, emotional states and locations. These categories are intelligently combined and processed at HLCA in order to determine and track
+by intelligently mining human’s daily living data generated through heterogeneous resources. The multimodal context mining framework presented in this paper plays a core role in Mining Minds for the transformation of heterogeneous sensory data into interpretable and actionable information from which behavioural patterns can be derived. Although this framework has originally been devised to operate in conjunction with other layers of the Mining Minds platform stack, it can nevertheless operate as an independent and decoupled engine for the inference and modelling of people’s context. The multimodal context mining framework is composed of two main modules, namely Low Level Context Awareness (LLCA) and High Level Context Awareness (HLCA). LLCA is in charge of converting the wide-spectrum of data obtained from the user interaction with the real and cyber world into abstract concepts or categories, namely physical activities, emotional states and locations. These categories are intelligently combined and processed at HLCA in order to determine and track
 more meaningful semantic representations of the user context.
-<br>
+<br><br>
 ![alt tag](https://nailbrainz.github.io/ICLLIB_reop/ICL.jpg)
 <br>
-# 2. Getting Started
+# 2. Low Level Context Awareness
 
-This section describes the requirements and initial setting to run the ICL-LLCA
-
-
-## 2.1 Requirements
-
-- Java versions: Java 1.8 or newer 
-- Tomcat version: 7.0 or newer
-
-## 2.2 Installation
-
-There is no explicit installation steps required to run the ICL-LLCA.
-- To run the ICL-LLCA inside the Ecplise, download the code from github, install tomcat into Eclipse and run the project in the tomcat server.
-- To run the ICL-LLCA with Tomcat outside the Eclipse, just place the *icl_whole.war* file in the */webapps* forder in Tomcat director, go to the */bin* directory and type
-```
-startup.bat
-```
-- You can also create the proper icl_whole.war file with the Maven. Go to the project root directory (where pom.xml is located) and type
-```
-mvn package
-```
-then the war file will be created in the /target folder
-
-## 2.3 Usage
-
-After starting the project in the Tomcat server, ICL-LLCA will run automatically. Some of the rest services it provides are as follows
-- *icl/llc/version* will provide you the version and additional information of the running ICL-LLCA instance. 
-- *icl/llc/updatesensordata* with this rest endpoint, you can provide **Device** data to the ICL-LLCA. 
-- ...
-
-
-
-
-# 3. Features
-
-## 3.1 Plug and play recognizers
-
-Recognizer is the core concept of ICL-LLCA, and it can be attached/detached from the ICL-LLCA with ease. To add the recognizer, you just need to inherit the *org.uclab.mm.icl.llc.LLCRecognizer.LLCRecognize* interface, properly implement abstract methods in the interface, and register your recognizer in *org.uclab.mm.icl.llc.config.RecognizerType* enum. Then it will begin to work to recognize User context ASAP in the ICL-LLCA. To turn off the recognizer, you can either unregister the recognizer from *org.uclab.mm.icl.llc.config.RecognizerType* enum or utilize the External Configuration file, iclconfig.json.
-
-## 3.2 External Configuration File
-
-iclconfig.json file, which is located in the root folder of the project, is used to configure the running instance of ICL-LLCA. You can change various things, such as period of the recognizers, uri of the Data Curation it considers. You can even turn on/off the recognizers. The change you made will take effect after restarting the server. 
-
-
-
-
-# 4. Authors
-
->  *Tae Ho, Hur*: hth@oslab.khu.ac.kr
-
->  *Jae Hun, Bang*: jhb@oslab.khu.ac.kr
-
->  *Huynh The Thien*: thienht@oslab.khu.ac.kr
-
->  *Dong Uk, Kang*: dwkang@oslab.khu.ac.kr
-
->  *Wajahat Ali Khan*: wajahat.alikhan@oslab.khu.ac.kr
-
-
-
-
-# 5. For more details
-
-For more details, usage and tutorials, please refer to the [ICL Server Demo Harness.docx](ICL Server Demo Harness.docx) file.
-
-
-
-
-# 6. License
+LLCA consists of the Sensory Data Router, Low-Level Context Recognizers (i.e., Activity
+Recognizer, Emotion Recognizer, Location Recognizer), Low-Level Context Unifiers (i.e., Activity
+Unifier, Emotion Unifier, Location Unifier) and Low-Level Context Notifiercomponents. The operation
+of the LLCA module is as follows. The influx of sensory data coming from the monitoring
+devices is first processed by the Sensory Data Router component to identify the Low-Level Context
+Recognizers to which each datum must be distributed. This identification is performed based on
+the nature of the incoming data and the requirements of each recognizer. Upon receiving new data,
+the Activity Recognizer, Emotion Recognizer and/or Location Recognizer take action. Each of these
+recognizers includes various subcomponents operating on different sensor data modalities. The
+decisions delivered by each individual subcomponent are fused or unified into a single context
+for every category through the Activity Unifier, Emotion Unifier and Location Unifier, respectively.
+Finally, once a new low-level context is identified (either activity, emotion or location), the Low-Level
+Context Notifier makes it available to HLCA for further analysis and also to any potential third party
+application, which might be registered for this type of information
+<br><br>
+![alt tag](https://nailbrainz.github.io/ICLLIB_reop/LLCA.jpg)
+<br>
+# 3. High Level Context Awareness
+HLCA consists of four main components: High-Level Context Builder, High-Level Context Reasoner,
+High-Level Context Notifier and Context Manager. The operation of HLCA is as follows.
+The High-Level Context Builder receives unstructured low-level information, namely activities,
+emotions and locations, yielded by the Low-Level Context Architecture. Then, based on the received
+low-level context information, the High-Level Context Builder generates the ontological concepts
+representing the user high-level context. The unclassified high-level context is served to the High-Level
+Context Reasoner for its verification and classification into one of the different high-level context
+categories by applying ontological inference. Once a newly classified high-level context has been
+identified, the High-Level Context Notifier makes it available to any third party application that
+registered for this type of information. During the context identification process, several components
+interact with the Context Manager, which provides ontological persistence, also supporting the easy
+access to low-level context and high-level context information. For all of the aforementioned processes,
+HLCA uses the Mining Minds Context Ontology.
+<br><br>
+![alt tag](https://nailbrainz.github.io/ICLLIB_reop/HLCA.jpg)
+<br>
+# 4. License
 
 The code is licensed under the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 <br>
