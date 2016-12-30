@@ -19,7 +19,7 @@
 
 - [4. License](#4-license)
 
-- [5. Contributors](#4-contributors)
+- [5. Contributors](#5-contributors)
 
 <!-- Main Body of the Document -->
 
