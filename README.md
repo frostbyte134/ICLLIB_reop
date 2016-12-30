@@ -1,8 +1,8 @@
 # Information Curation Layer
 
 <!-- make your own badges from here: http://shields.io/ -->
-[![Version](https://img.shields.io/badge/ICL-2.5-ff69b4.svg)](http://www.miningminds.re.kr/english/)
-![License](https://img.shields.io/badge/Apache%20License%20-Version%202.0-yellowgreen.svg)
+[![Version](https://img.shields.io/badge/ICL-2.5-ff69b4.svg)](http://www.miningminds.re.kr/approach/)
+[![License](https://img.shields.io/badge/Apache%20License%20-Version%202.0-yellowgreen.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 --------------------------
 
@@ -19,13 +19,15 @@
 
 - [4. License](#4-license)
 
+- [5. Contributors](#4-contributors)
+
 <!-- Main Body of the Document -->
 
 
 # 1. Introduction
 
-Current domain-specific solutions are seen to be certainly insufficient to deal with the magnitude of the behaviour analysis problem, thus making it necessary to rather use more holistic approaches to infer and analyse people’s conduct. In this context, it is devised Mining Minds, a novel digital health and wellness platform designed to seamlessly investigate and support people’s lifestyles
-by intelligently mining human’s daily living data generated through heterogeneous resources. The multimodal context mining framework presented in this paper plays a core role in Mining Minds for the transformation of heterogeneous sensory data into interpretable and actionable information from which behavioural patterns can be derived. Although this framework has originally been devised to operate in conjunction with other layers of the Mining Minds platform stack, it can nevertheless operate as an independent and decoupled engine for the inference and modelling of people’s context. The multimodal context mining framework is composed of two main modules, namely Low Level Context Awareness (LLCA) and High Level Context Awareness (HLCA). LLCA is in charge of converting the wide-spectrum of data obtained from the user interaction with the real and cyber world into abstract concepts or categories, namely physical activities, emotional states and locations. These categories are intelligently combined and processed at HLCA in order to determine and track
+Current domain-specific solutions are seen to be certainly insufficient to deal with the magnitude of the behaviour analysis problem, thus making it necessary to rather use more holistic approaches to infer and analyse people's conduct. In this context, it is devised Mining Minds, a novel digital health and wellness platform designed to seamlessly investigate and support people's lifestyles
+by intelligently mining human's daily living data generated through heterogeneous resources. The multimodal context mining framework presented in this paper plays a core role in Mining Minds for the transformation of heterogeneous sensory data into interpretable and actionable information from which behavioural patterns can be derived. Although this framework has originally been devised to operate in conjunction with other layers of the Mining Minds platform stack, it can nevertheless operate as an independent and decoupled engine for the inference and modelling of people's context. The multimodal context mining framework is composed of two main modules, namely Low Level Context Awareness (LLCA) and High Level Context Awareness (HLCA). LLCA is in charge of converting the wide-spectrum of data obtained from the user interaction with the real and cyber world into abstract concepts or categories, namely physical activities, emotional states and locations. These categories are intelligently combined and processed at HLCA in order to determine and track
 more meaningful semantic representations of the user context.
 <br><br>
 ![alt tag](https://nailbrainz.github.io/ICLLIB_reop/ICL.jpg)
@@ -71,5 +73,17 @@ HLCA uses the Mining Minds Context Ontology.
 The code is licensed under the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 <br>
  
+# 5. Contributors
 
+#### Team Lead 
+
+- Dr. Wajahat Ali Khan (wajahat.alikhan@oslab.khu.ac.kr)
+
+#### Team members 
+- Claudia Villalonga (cvillalonga@oslab.khu.ac.kr)
+- Muhammad Asif Razzaq (asif.razzaq@oslab.khu.ac.kr)
+- Tae Ho, Hur (hth@oslab.khu.ac.kr)
+- Jae Hun, Bang (jhb@oslab.khu.ac.kr)
+- Huynh The Thien (thienht@oslab.khu.ac.kr)
+- Dong Uk, Kang (dwkang@oslab.khu.ac.kr)
 
